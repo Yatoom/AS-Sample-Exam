@@ -1,3 +1,13 @@
+/* ----------------------------------------------------------------------------
+ * | PART 1
+ * ----------------------------------------------------------------------------
+ * In this exercise we will consider gestational age ( GA ) as the outcome 
+ * variable of interest and ignore all other variables. To be able to answer 
+ * the questions, create a data set that contains only data from period 4 
+ * months (PER=4) and calculate the transformation log (44 − GA), with log the 
+ * natural logarithm.
+ */
+
 /* Macros */
 %macro ci_mean(data, column, quant);
 	proc means data=&data noprint;
@@ -45,7 +55,7 @@
  * - Import stored data in SAS format (LIBNAME)
  */
 
-LIBNAME SASDATA '/folders/myfolders/';
+LIBNAME SASDATA '/folders/myfolders/sample_exam/';
 DATA DATA;
 	SET SASDATA.ivf;
 	WHERE PER=4;
@@ -84,7 +94,7 @@ RUN;
  * ----------------------------------------------------------------------------
  * Test if gestational age is normally distributed. Report the value of the 
  * test statistic, the p -value, the conclusion, and the reason for choosing
- * this specic test statistic.
+ * this specic test statistic.
  */
 
 /* Tests for normality:
@@ -146,9 +156,9 @@ run;
 /* ----------------------------------------------------------------------------
  * | QUESTION 1E
  * ----------------------------------------------------------------------------
- * Premature birth is defined as gestational age less than 37 weeks. Literature 
+ * Premature birth is defined as gestational age less than 37 weeks. Literature 
  * suggests that premature births occur once in every ten deliveries. Report 
- * the proportion of premature births with an appropriate 95% condence 
+ * the proportion of premature births with an appropriate 95% condence 
  * interval. Conclude if the group of women under study have a higher risk of
  * premature births?
  */
@@ -178,4 +188,4 @@ RUN;
 
 PROC PRINT DATA=CI_PROP;
 RUN;
-	
+
